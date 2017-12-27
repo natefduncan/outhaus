@@ -1,0 +1,44 @@
+
+<!Doctype HTML>
+
+{% load static %}
+
+<html>
+
+<head>
+	<meta charset= "utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title> Login </title>
+
+	<link href = "{% static 'bathroom/style.css' %}" rel = "stylesheet"> 
+
+</head>
+
+<body>
+
+{% block content %}
+
+<h1> OutHaus </h1>
+
+<form method="post" action="." class = "login">
+
+{% csrf_token %}
+
+<div style = "width: 250px; margin: 0 auto; display: block">
+
+	<input  id="username" type="text" name="username" placeholder="Username" class = "login">
+    <input  id="password" type="text" name="password" placeholder="Password" class = "login">
+    <input id = "first_name" type = "text" name = "first_name" placeholder = "First Name" class = "login">
+    <input id = "last_name" type = "text" name = "last_name" placeholder = "Last Name" class = "login">
+    <input id = "email_add" type = "text" name = "email_add" placeholder = "Email Address" class = "login">
+
+    <input type="submit" value="Submit" style = "font-size: 20px; font-family: 'Futura', 'Trebuchet MS', Arial, sans-serif;"/>
+</div>
+
+</form>
+
+{% endblock %}
+
+</body>
+
+<html> 

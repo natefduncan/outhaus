@@ -1,0 +1,52 @@
+<!DOCTYPE HTML> 
+
+{% load static %}
+
+<html lang = "en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<title> Add Review </title>
+
+    	<link href = "{% static 'bathroom/style.css' %}" rel = "stylesheet">
+    	<link rel="stylesheet" href= "{% static 'bathroom/icon_css/fontawesome-all.css' %}">
+    	<script src="https://use.fontawesome.com/00c8408529.js"></script>
+
+	</head>
+
+	<body>
+		<div class = "add_location">
+			<h1> Add Review </h1>
+		</div>
+
+		<div class = "add_location">
+
+			<form method="post" action="." class = "review_bar" id = "review_text"> {% csrf_token %} 
+
+            	<textarea form = "review_text" type="text" name="review_text" class = "review_fields"> </textarea>
+
+                <select name = "review_num">
+                    <option value = 0> 0 </option>
+                    <option value = 1> 1</option>
+                    <option value = 2> 2</option>
+                    <option value = 3> 3</option>
+                    <option value = 4> 4</option>
+                    <option value = 5> 5</option>
+                    <option value = 6> 6</option>
+                    <option value = 7> 7</option>
+                    <option value = 8> 8</option>
+                    <option value = 9> 9</option>
+                    <option value = 10> 10</option>
+                </select>
+
+                <input name = "submit_location" action = "." type = 'submit' class = "btn_current submit_location" style = "height: 30px"> </input>
+
+            </form>
+
+            <a name = "return_to_map" type = "button" class = "btn_current submit_location" href = "{% url 'map' %}"> Return to Map </a>
+
+		</div>
+
+	</body>
+
+</html>

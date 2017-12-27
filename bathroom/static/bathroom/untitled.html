@@ -1,0 +1,38 @@
+<!DOCTYPE HTML> 
+
+{% load static %}
+
+<html lang = "en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<title> Add Review </title>
+
+    	<link href = "{% static 'bathroom/style.css' %}" rel = "stylesheet">
+    	<link rel="stylesheet" href= "{% static 'bathroom/icon_css/fontawesome-all.css' %}">
+    	<script src="https://use.fontawesome.com/00c8408529.js"></script>
+
+	</head>
+
+	<body>
+		<div class = "add_location">
+			<h1> Add Review </h1>
+		</div>
+
+		<div class = "add_location">
+
+			<form method="post" action="." class = "location_bar"> {% csrf_token %} 
+
+            	<input  id="review_text" type="text" name="review_text" placeholder="..." class = "review_text">
+
+                <input name = "submit_location" action = "." type = 'submit' class = "btn_current submit_location"> </input>
+
+            </form>
+
+            <a name = "return_to_map" type = "button" class = "btn_current submit_location" href = "{% url 'map' %}"> Return to Map </a>
+
+		</div>
+
+	</body>
+
+</html>

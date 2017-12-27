@@ -1,0 +1,46 @@
+<!DOCTYPE HTML> 
+
+{% load static %}
+
+<html lang = "en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<title> Add Location </title>
+
+    	<link href = "{% static 'bathroom/style.css' %}" rel = "stylesheet">
+    	<link rel="stylesheet" href= "{% static 'bathroom/icon_css/fontawesome-all.css' %}">
+    	<script src="https://use.fontawesome.com/00c8408529.js"></script>
+
+	</head>
+
+	<body>
+		<div c=lass = "add_location">
+			<h1> Add Location </h1>
+		</div>
+
+		<div class = "add_location">
+
+			<form method="post" action="." class = "location_bar"> {% csrf_token %} 
+
+            	<input  id="location_name" type="text" name="location_name" placeholder="Name" class = "location_fields">
+
+            	<input  id="location_address" type="text" name="location_address" placeholder="Address" class = "location_fields" >
+
+            	<input  id="location_city" type="text" name="location_city" placeholder="City" class = "location_fields">
+
+            	<input  id="location_state" type="text" name="location_state" placeholder="State" class = "location_fields">
+
+            	<input  id="location_zip" type="text" name="location_zip" placeholder="Zip Code" class = "location_fields">
+
+                <input name = "submit_location" action = "." type = 'submit' class = "btn_current submit_location"> </input>
+
+            </form>
+
+            <a name = "return_to_map" type = "button" class = "btn_current submit_location" href = "{% url 'map' %}"> Return to Map </a>
+
+		</div>
+
+	</body>
+
+</html>

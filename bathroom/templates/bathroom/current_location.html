@@ -1,0 +1,52 @@
+
+{% load leaflet_tags %}
+{% load static %}
+
+<html>
+
+    <head>
+
+        {% leaflet_js %}
+        {% leaflet_css %}
+
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+        <link href="{% static 'bathroom/style.css' %}" rel="stylesheet" />
+
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <script src= "{% static 'bathroom/leaflet-geoip.js' %}"></script>
+
+    </head>
+
+<div class = "content">
+
+    <body>
+
+        <form type="get" action="." class = "search_bar">
+            <input  id="search_box" type="text" name="search_box" placeholder="Search..." >
+        </form>
+
+            <a name = "current_location" href = "{%url 'current_location' %}" class = "btn"> Use Current Location </a>
+
+        <div id = "map"> </div>
+
+        <script type="text/javascript">
+
+            var pos = L.GeoIP.getPosition();
+
+            var map = L.map('map', center: pos);
+
+            L.GeoIP.centerMapOnPosition(map);
+
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+        </script>
+
+        {% leaflet_map 'map' %}
+
+    </body>
+
+</div>
+
+</html>

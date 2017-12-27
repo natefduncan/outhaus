@@ -1,0 +1,66 @@
+<!Doctype HTML>
+
+{% load static %}
+
+<html>
+
+<head>
+	<meta charset= "utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title> Login </title>
+
+	<link href = "{% static 'bathroom/style.css' %}" rel = "stylesheet"> 
+
+</head>
+
+<body>
+
+{% block content %}
+
+{% if form.errors %}
+<p class = "login">Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<h1> OutHaus </h1>
+
+<form method="post" action="{% url 'login' %}" class = "login">
+{% csrf_token %}
+
+<div style = "width: 250px; margin: 0 auto;">
+
+<form method="post" action="." class = "location_bar"> {% csrf_token %} 
+
+	<input  id="username" type="text" name="username" placeholder="Username" class = "login">
+
+    <input  id="password" type="password" name="password" placeholder="Password" class = "login" >
+
+</form>
+
+<div class = "login" style = "width: 200px; margin: 0">
+  <input type="submit" value="Login" style = "font-size: 20px; font-family: 'Futura', 'Trebuchet MS', Arial, sans-serif;"/>
+  <input type="hidden" name="next" value="{{ next }}" />
+
+</div>
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+
+<p class = "login" style = "font-size: 16px"><a href="{% url 'signup' %}">Create Account</a></p>
+<p class = "login" style = "font-size: 16px"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+
+</div>
+
+{% endblock %}
+
+</body>
+
+<html> 
